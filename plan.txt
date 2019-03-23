@@ -1,0 +1,59 @@
+jeu {
+	propriétaire=0;
+	contenue = [//un objet avec un contenue est un morpion
+		{
+			propriétaire=0
+			contenue=[]//un objet sans contenue est une case
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		},
+		{
+			propriétaire=0
+			contenue=[]
+		}
+	]
+}
+
+le php accède au json pour modifier le morpion au fur et à mesure de la partie.
+Les clients js envoient leur mouvement en Ajaxx.
+
+lors d'une nouvelle partie, php génère un nouveau jeu JSON dans la db.
+
+CodeIgniter ?
+
+class partie
+	fonction constructeur(puissance, joueurs[])
+		créer un nouveau fichier de partie nommé X.json, X étant l'identifiant de la partie
+		X.json contient
+			la liste des joueurs dans l'ordre de jeu avec leur marque/couleur associé
+			l'identifiant du joueurs devant jouer (par défaut le premier)
+			les coordonnée de là où le joueurs a le droit de jouer (par défaut tout le plateau)
+			un tableau mmorpion vierge à la puissance selectionné
+			un tableau de log de chaque coup qui sera joué
+		
