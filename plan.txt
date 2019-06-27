@@ -46,14 +46,35 @@ Les clients js envoient leur mouvement en Ajaxx.
 lors d'une nouvelle partie, php génère un nouveau jeu JSON dans la db.
 
 CodeIgniter ?
+coté serveur
 
-class partie
-	fonction constructeur(puissance, joueurs[])
-		créer un nouveau fichier de partie nommé X.json, X étant l'identifiant de la partie
-		X.json contient
-			la liste des joueurs dans l'ordre de jeu avec leur marque/couleur associé
-			l'identifiant du joueurs devant jouer (par défaut le premier)
-			les coordonnée de là où le joueurs a le droit de jouer (par défaut tout le plateau)
-			un tableau mmorpion vierge à la puissance selectionné
-			un tableau de log de chaque coup qui sera joué
-		
+	class MMorpion
+		fonction constructeur(puissance, joueurs[], couleurs[])
+			créer un nouveau fichier de partie nommé X.json, X étant l'identifiant de la partie
+			X.json contient
+				la liste des joueurs dans l'ordre de jeu avec leur couleur associé
+				l'identifiant du joueurs devant jouer (par défaut le premier)
+				les coordonnée de là où le joueurs a le droit de jouer (par défaut tout le plateau)
+				un tableau mmorpion vierge à la puissance selectionné
+				un tableau de log de chaque coup qui sera joué
+			l'accès à se fichier est ouvert
+			l'identifiant est renvoyé
+
+		fonction constructeur(url(X.json))
+			accède au fichier X.json et charge son contenu
+
+		fonction quiJoue()
+			renvoie qui doit jouer
+
+		fonction oùJouer()
+			renvoie où le joueur actuel peut jouer
+
+		fonction joue(joueur, coordonné)
+
+coté client
+	
+	class MMorpion
+		fonction constructeur(puissance, joueurs[], couleurs[])
+			envoie une requête ajax au serveur pour la création d'une nouvelle partie, la puissance, les joueurs et leur couleurs sont envoyé en paramètre
+			l'identifiant est attendu
+				l'identifiant est indiqué au joueur et la partie commence
